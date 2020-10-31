@@ -1,0 +1,140 @@
+/**
+ * global variable
+ */
+/* Font
+-------------------------- */
+$primary-color = #018ffb
+$font-coloc-ordinary = rgba(255, 255, 255, 0.87) // 普通文本颜色
+$font-coloc-Secondary = rgba(255, 255, 255, 0.6) // 次级文本颜色
+$font-coloc-prompt = rgba(255, 255, 255, 0.38) // 提示文本颜色
+$font-mostBig-size = 60px // 特大文字大小
+$font-headline-size = 48px // 大标题文字大小
+$font-firstlevel-size = 30px // 一级文字大小
+$font-secondlevel-size = 24px // 二级文字大小
+$font-ordinary-size = 18px // 普通文字大小
+$font-secondary-size = 16px // 次级文字大小
+$font-prompt-size = 14px // 提示文字大小
+
+$link-color = rgba(255, 255, 255, 0.87) // 普通文本颜色
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+// remove the clear button of a text input control in IE10+
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+
+body {
+  font-family: 'Microsoft YaHei,微软雅黑,Arial,sans-serif,Helvetica Neue,Helvetica,Pingfang SC,Hiragino Sans GB';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.428571429; // 20/14
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: left; // Fallback for where `start` is not supported
+  text-align: start;
+  text-decoration: none;
+  text-size-adjust: 100%;
+  text-shadow: none;
+  text-transform: none;
+  word-break: normal;
+  word-wrap: normal;
+  white-space: normal;
+  line-break: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+img {
+  vertical-align: top;
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+i,
+em {
+  font-style: normal;
+}
+
+button,
+div:focus {
+  outline: none !important;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent; // remove the gray background on active links in IE 10.
+  outline: none;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects; // remove gaps in links underline in iOS 8+ and Safari 8+.
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  vertical-align: baseline !important;
+}
+
+#app,
+#app > div,
+.ant-layout {
+  width: 100%;
+  height: 100%;
+}
+
+.ant-layout {
+  background: #fff;
+
+  &-content {
+    position: relative;
+    overflow: hidden;
+  }
+}
