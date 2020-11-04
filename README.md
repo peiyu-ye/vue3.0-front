@@ -3,22 +3,22 @@
 ## 建议vscode安装stylus插件
 ## vue3.0 + ts + ant-design-vue + stylus
 
-## Project setup
+## 安装依赖
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 开发启动
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 打包
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### 格式化
 ```
 yarn lint
 ```
