@@ -3,22 +3,22 @@
 ## 建议vscode安装stylus插件
 ## vue3.0 + ts + ant-design-vue + stylus
 
-## Project setup
+## 安装依赖
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 开发启动
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 打包
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### 格式化
 ```
 yarn lint
 ```
@@ -135,18 +135,88 @@ watch(counter, (newValue, oldValue) => {
 })
 ```
 
-### vue-router4.0 
-```
-yarn add vue-router@next
+## 配置项目
 
-```
-创建 /router/index.js
-```
-import { createRouter, createWebHashHistory，createWebHistory } from 'vue-router'
-```
+### 配置Vue Router
+Vue Router 4.0 ，变化请查看 [Github](https://github.com/vuejs/vue-router-next) 中完整的细节，
+目前版本beta: v4.0.0-beta.13, yarn 进行安装需要带上版本号
+**配置vue-router**
 createRouter 创建路由实例
 ```
 路由模式 :
   hash模式：createWebHashHistory。
   history模式：createWebHistory。
 ```
+在项目src目录下面新建router目录内容
+```typescript
+// import VueRouter from 'vue-router'
+import {createRouter, createWebHashHistory} from 'vue-router'
+const routes:any = []
+// Vue-router新版本中，需要使用createRouter来创建路由
+export default  createRouter({
+  // 指定路由的模式,此处使用的是hash模式
+  history: createWebHashHistory(),
+  routes // short for `routes: routes`
+})
+
+// const routes :any = []
+// // 3. Create the router instance and pass the `routes` option
+// // You can pass in additional options here, but let's
+// // keep it simple for now.
+// const router = VueRouter.createRouter({
+//   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+//   history: VueRouter.createWebHashHistory(),
+//   routes, // short for `routes: routes`
+// })
+
+```
+
+### 配置Vuex
+Vuex 4.0 ，变化请查看[Github](https://github.com/vuejs/vuex/tree/4.0)
+目前版本beta: v4.0.0-beta.4
+**配置vuex**
+在项目src目录下面新建store目录index.ts文件内容
+```typescript
+import { createStore } from 'vuex'
+
+interface State {
+  userName: string
+}
+export default createStore({
+  state(): State {
+    return {
+      userName: "vuex",
+    };
+  },
+});
+```
+
+### 配置Ant Design Vue 
+具体使用方式请参考：[官方文档](https://2x.antdv.com/docs/vue/introduce-cn/)
+**1、引入ant-design-vue**
+```
+yarn  add ant-design-vue@next
+```
+
+**2、在main.ts中引入**
+```typescript
+iimport { createApp } from 'vue'
+import App from './App.vue'
+import './index.css'
+import AntDesignVue from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
+import router from './router/index'
+import store from './store/index'
+
+// import router 后创建并挂载根实例。
+const app = createApp(App)
+// 确保 t_use_  实例来创建router
+// 整个应用程序路由器感知。
+app.use(router)
+app.use(store)
+app.use(AntDesignVue)
+app.mount('#app')
+// createApp(App).mount('#app')
+```
+
+
