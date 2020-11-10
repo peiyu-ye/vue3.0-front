@@ -47,6 +47,7 @@
           刷新
         </a-button>
       </div>
+      <p><Icon icon="mdi:account" color="#000" /></p>
     </div>
     <div class="configListMian-center">
       <div class="configListMian-center-table">
@@ -99,8 +100,10 @@ import {
 import API from "../../api/api";
 import { message } from "ant-design-vue";
 import { useForm } from "@ant-design-vue/use";
+import Icon from "@/components/Icon/index";
 
 export default defineComponent({
+  components: { Icon },
   /** 所有的代码逻辑将在setup方法中实现，并且不再有this */
   setup() {
     /** 返回值 */

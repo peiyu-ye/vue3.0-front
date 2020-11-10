@@ -22,14 +22,26 @@
           <a-menu-item v-if="!item.children" :key="item.name">
             <router-link :to="item.path">
               <span>
-                <AppstoreOutlined /> <span>{{ item.meta.title }}</span>
+                <Icon
+                  :icon="item.meta.icon"
+                  color="#fff"
+                  :size="18"
+                  class="icon-class"
+                />
+                <span>{{ item.meta.title }}</span>
               </span>
             </router-link>
           </a-menu-item>
           <a-sub-menu v-else :key="item.name">
             <template v-slot:title>
               <span>
-                <AppstoreOutlined /><span>{{ item.meta.title }}</span>
+                <Icon
+                  :icon="item.meta.icon"
+                  color="#fff"
+                  :size="18"
+                  class="icon-class"
+                />
+                <span>{{ item.meta.title }}</span>
               </span>
             </template>
 
@@ -51,14 +63,14 @@
 import { reactive, computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
-// ant-design2.0 需要一个个引用图标， 后面需重新封装icon方法
-import { AppstoreOutlined } from "@ant-design/icons-vue";
+// 封装icon方法
+import Icon from "@/components/Icon/index";
 export default {
   name: "lauout-sider",
   /** 父组件传过来的值 */
   props: {},
   /** 组件 */
-  components: { AppstoreOutlined },
+  components: { Icon },
   setup() {
     interface DataType {
       theme: string;
@@ -119,5 +131,9 @@ body {
     color: #fff;
     text-align: center;
   }
+}
+.icon-class{
+  padding-bottom: 3px;
+  padding-right: 4px;
 }
 </style>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import comfigList from "./modules/comfigList";
+import test from "./modules/test";
 const Layout = () => import("@/views/Home.vue");
 
 const routes: Array<any> = [
@@ -13,6 +14,16 @@ const routes: Array<any> = [
     }, //路由元
     component: Layout,
     children: [
+      {
+        path: "/index",
+        name: "index",
+        hidden: false,
+        meta: {
+          icon: "ant-design:home-filled",
+          title: "主页"
+        },
+        component: () => import("@/views/user/userCenter.vue"),
+      },
       // 菜单一
       comfigList,
       // 用户中心

@@ -103,31 +103,48 @@ export default defineComponent({
         const data = await form.validate();
         // 调用登录接口API
         // console.log("userInfo", userInfo);
-        API.loginAPI
-          .login(
-            toRaw({
-              companyName: data.companyName,
-              password: Md5.hashStr(data.password),
-              workerId: data.account
-            })
-          )
-          .then(response => {
-            console.log("loginInfo: ", response);
-            localStorage.token = response.data.token;
-            localStorage.login_userName = data.account;
-            localStorage.login_companyName = data.companyName;
+        // API.loginAPI
+        //   .login(
+        //     toRaw({
+        //       companyName: data.companyName,
+        //       password: Md5.hashStr(data.password),
+        //       workerId: data.account
+        //     })
+        //   )
+        //   .then(response => {
+        //     console.log("loginInfo: ", response);
+        //     localStorage.token = response.data.token;
+        //     // eslint-disable-next-line @typescript-eslint/camelcase
+        //     localStorage.login_userName = data.account;
+        //     // eslint-disable-next-line @typescript-eslint/camelcase
+        //     localStorage.login_companyName = data.companyName;
 
-            toPage("/layout");
-            setTimeout(() => {
-              notification["success"]({
-                message: "登录成功",
-                description: "尊敬的" + data.account + "用户，欢迎回来！"
-              });
-            }, 500);
-          })
-          .catch(e => {
-            console.log(e);
-          });
+        //     toPage("/layout");
+        //     setTimeout(() => {
+        //       notification["success"]({
+        //         message: "登录成功",
+        //         description: "尊敬的" + data.account + "用户，欢迎回来！"
+        //       });
+        //     }, 500);
+        //   })
+        //   .catch(e => {
+        //     console.log(e);
+        //   });
+        setTimeout(() => {
+          localStorage.token = data.account;
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          localStorage.login_userName = data.account;
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          localStorage.login_companyName = data.companyName;
+
+          toPage("/layout");
+          setTimeout(() => {
+            notification["success"]({
+              message: "登录成功",
+              description: "尊敬的" + data.account + "用户，欢迎回来！"
+            });
+          }, 500);
+        }, 1000);
       } catch (error) {
         notification["error"]({
           message: "登录失败",

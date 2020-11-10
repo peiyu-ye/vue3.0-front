@@ -5,6 +5,7 @@ const comfigList = {
   name: "ConfigList",
   hidden: false,
   meta: {
+    icon: "ant-design:phone-filled",
     title: "群呼任务",
     isLogin:true    // 添加该字段，表示进入这个路由是需要登录的
   },
@@ -15,7 +16,7 @@ const comfigList = {
       name: "Item1",
       hidden: false,
       meta: {
-        title: "号码组",
+        title: "号码组"
       },
       component: () => import("@/views/configList/dialing.vue"),
     },
