@@ -1,5 +1,7 @@
 <template>
-  <div>菜单二->导航二</div>
+  <div class="index-class">
+    <h1>主页</h1>
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,4 +18,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="stylus" scoped>
+.index-class{
+  color: #000;
+}
+</style>

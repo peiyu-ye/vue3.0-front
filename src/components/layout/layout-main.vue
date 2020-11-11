@@ -2,7 +2,7 @@
   <div :class="data.isCollapse ? 'main-wrap-mix' : 'main-wrap'">
     <a-layout-content>
       <router-view>
-        <router-view />
+        <router-view></router-view>
       </router-view>
     </a-layout-content>
   </div>

@@ -1,28 +1,28 @@
 import { createRouter, createWebHistory } from "vue-router";
 import comfigList from "./modules/comfigList";
-import test from "./modules/test";
 const Layout = () => import("@/views/Home.vue");
 
 const routes: Array<any> = [
   {
     // 主框架
     path: "/layout",
-    name: "Home",
+    name: "index",
     hidden: false,
     meta: {
       isLogin: true, // 添加该字段，表示进入这个路由是需要登录的
     }, //路由元
+    redirect: '/dashboard',
     component: Layout,
     children: [
       {
-        path: "/index",
+        path: "/dashboard",
         name: "index",
         hidden: false,
         meta: {
           icon: "ant-design:home-filled",
           title: "主页"
         },
-        component: () => import("@/views/user/userCenter.vue"),
+        component: () => import("@/views/dashboard/index.vue"),
       },
       // 菜单一
       comfigList,
@@ -45,6 +45,12 @@ const routes: Array<any> = [
             hidden: true,
             component: () => import("@/views/user/changePassword.vue"),
           },
+          {
+            path: "/dashboard",
+            name: "index",
+            hidden: false,
+            component: () => import("@/views/dashboard/index.vue"),
+          }
         ],
       },
     ],

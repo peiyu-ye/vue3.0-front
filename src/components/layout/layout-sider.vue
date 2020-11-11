@@ -15,7 +15,7 @@
           mode="inline"
           :key="item.name"
           v-if="!item.hidden"
-          :inlineCollapsed="false"
+          :inline-collapsed="data.isCollapse"
           v-model:selectedKeys="data.selectedKeys"
           v-model:openKeys="data.openKeys"
         >
