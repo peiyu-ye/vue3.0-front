@@ -64,8 +64,12 @@ console.log(count.value) // 0
 count.value++
 console.log(count.value) // 1
 
-如果传入 ref 的是一个对象，将调用 reactive 方法进行深层响应转换。
+// 如果传入 ref 的是一个对象，将调用 reactive 方法进行深层响应转换。
 ```
+ref 就当作简单的双向绑定变量 ;
+toRef 就是把不是响应式的对象转化成响应式 ;
+toRefs 就是把响应式的reactive对象，分解成无数的 ref 双向绑定 ;
+
 ### isRef
 isRef用于判断变量是否为ref对象。isRef(数据)，返回true或者是false。
 ```javascript
@@ -144,6 +148,8 @@ nextTick(() => {
   // 一些和DOM有关的东西
 })
 ```
+3.x 版本中 v-if 总是优先于 v-for 生效
+
 ## 配置项目
 
 ### 配置Vue Router

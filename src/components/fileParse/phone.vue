@@ -30,53 +30,6 @@ export default defineComponent({
       fileList: [],
       resolveData: false
     });
-
-    // 前端解析电话号码文件
-    function addFile(allFile: any) {
-      // 解析电话
-      const file = allFile.file;
-      const fileList = allFile.fileList;
-      if (/\.(xls|xlsx|txt)$/.test(file.name)) {
-        const fileReader = new FileReader();
-        fileReader.onload = ev => {
-          try {
-            const target: any = ev.target;
-            if (/\.txt$/.test(file.name)) {
-              // eslint-disable-next-line @typescript-eslint/no-use-before-define
-              resetPhone(target.result.split(/[\r\n\s，,#"']/));
-            } else {
-              const workbook = XLSX.read(target.result, {
-                type: "binary"
-              });
-              const wsname = workbook.SheetNames[0]; // 取第一张表
-              const ws = XLSX.utils.sheet_to_json(workbook.Sheets[wsname], {
-                header: "A",
-                raw: true,
-                defval: ""
-              });
-              // eslint-disable-next-line @typescript-eslint/no-use-before-define
-              resetPhone(ws.map((item: any) => item["A"].toString().trim()));
-            }
-            setTimeout(() => {
-              fileList.pop();
-            }, 0);
-          } catch (e) {
-            datas.resolveData = false;
-            message.warning("处理文件失败");
-            fileList.pop();
-          }
-        };
-        nextTick(() => {
-          if (/\.txt$/.test(file.name))
-            fileReader.readAsText(file.originFileObj, "utf-8");
-          else fileReader.readAsBinaryString(file.originFileObj);
-        });
-      } else {
-        datas.resolveData = false;
-        message.warning("文件格式不支持");
-        fileList.pop();
-      }
-    }
     // 判断可上传啥，这里是数字
     function resetPhone(numberList: any) {
       const numText = new RegExp(/^[0-9]+$/);
@@ -105,6 +58,50 @@ export default defineComponent({
       nextTick(() => {
         datas.resolveData = false;
       });
+    }
+    // 前端解析电话号码文件
+    function addFile(allFile: any) {
+      // 解析电话
+      const file = allFile.file;
+      const fileList = allFile.fileList;
+      if (/\.(xls|xlsx|txt)$/.test(file.name)) {
+        const fileReader = new FileReader();
+        fileReader.onload = ev => {
+          try {
+            const target: any = ev.target;
+            if (/\.txt$/.test(file.name)) {
+              resetPhone(target.result.split(/[\r\n\s，,#"']/));
+            } else {
+              const workbook = XLSX.read(target.result, {
+                type: "binary"
+              });
+              const wsname = workbook.SheetNames[0]; // 取第一张表
+              const ws = XLSX.utils.sheet_to_json(workbook.Sheets[wsname], {
+                header: "A",
+                raw: true,
+                defval: ""
+              });
+              resetPhone(ws.map((item: any) => item["A"].toString().trim()));
+            }
+            setTimeout(() => {
+              fileList.pop();
+            }, 0);
+          } catch (e) {
+            datas.resolveData = false;
+            message.warning("处理文件失败");
+            fileList.pop();
+          }
+        };
+        nextTick(() => {
+          if (/\.txt$/.test(file.name))
+            fileReader.readAsText(file.originFileObj, "utf-8");
+          else fileReader.readAsBinaryString(file.originFileObj);
+        });
+      } else {
+        datas.resolveData = false;
+        message.warning("文件格式不支持");
+        fileList.pop();
+      }
     }
 
     /** 返回值  */

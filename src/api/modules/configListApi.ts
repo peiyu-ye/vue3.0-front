@@ -65,11 +65,76 @@ const configAPI = {
       params
     );
   },
+  
+  /** 任务列表 */
   // /api/hrm/range/worker
   getWorker(){
     return services.get(`${base.crmBaseURL}/api/hrm/range/worker`);
-  }
+  },
+  // api/config/groupcall/task/list
+  getTaskList(params: paramsType) {
+    // return services.get(`${base.crmBaseURL}/api/config/groupcall/task/list?sortField=${params.sortField}&order=${params.order}&page=${params.page}&pageSize=${params.pageSize}`);
+    return services.get(`${base.crmBaseURL}/api/config/groupcall/task/list`,params);
+  },
 
+  // 上传录音文件 /api/config/groupcall/upload/record
+  uploadRecord(params: paramsType,config: any) {
+    return services.post(
+      `${base.crmBaseURL}/api/config/groupcall/upload/record`,
+      params,
+      config
+    );
+  },
+  // 新增
+  addTask(params: paramsType) {
+    return services.post(
+      `${base.crmBaseURL}/api/config/groupcall/task/add`,
+      params
+    );
+  },
+  //删除 
+  deleteTask(params: paramsType) {
+    return services.post(
+      `${base.crmBaseURL}/api/config/groupcall/task/delete`,
+      params
+    );
+  },
+  //获取行详情数据
+  detailTask(params: paramsType) {
+    return services.post(
+      `${base.crmBaseURL}/api/config/groupcall/task/detail`,
+      params
+    );
+  },
+  // 更新
+  updateTask(params: paramsType) {
+    return services.post(
+      `${base.crmBaseURL}/api/config/groupcall/task/update`,
+      params
+    );
+  },
+  // 被叫状态
+  getCallStatus() {
+    return services.get(`${base.crmBaseURL}/api/config/groupcall/callee/status`);
+  },
+  // 获取呼叫详情
+  getCalleeList(params: paramsType) {
+    return services.get(`${base.crmBaseURL}/api/config/groupcall/task/callee/list`,params);
+  },
+  // '/api/config/groupcall/start'
+  startStatus(params: paramsType) {
+    return services.post(
+      `${base.crmBaseURL}/api/config/groupcall/start`,
+      params
+    );
+  },
+  // '/api/config/groupcall/stop'
+  stopStatus(params: paramsType) {
+    return services.post(
+      `${base.crmBaseURL}/api/config/groupcall/stop`,
+      params
+    );
+  },
 };
 
 export default configAPI;
