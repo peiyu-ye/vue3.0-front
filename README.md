@@ -138,6 +138,52 @@ watch(counter, (newValue, oldValue) => {
   console.log('The new counter value is: ' + counter.value)
 })
 ```
+### v-model
+
+在 3.x 中，自定义组件上的 v-model 相当于传递了 modelValue prop 并接收抛出的 update:modelValue 事件：
+
+```javascript
+<ChildComponent v-model="pageTitle" />
+
+<!-- 简写: -->
+
+<ChildComponent
+  :modelValue="pageTitle"
+  @update:modelValue="pageTitle = $event"
+/>
+```
+#### v-model 参数
+若需要更改 model 名称，而不是更改组件内的 model 选项，那么现在我们可以将一个 argument 传递给 model：
+```javascript
+<ChildComponent v-model:title="pageTitle" />
+
+<!-- 简写: -->
+
+<ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
+v-bind anatomy
+```
+
+这也可以作为 .sync 修饰符的替代，而且允许我们在自定义组件上使用多个 v-model。
+```javascript
+<ChildComponent v-model:title="pageTitle" v-model:content="pageContent" />
+
+<!-- 简写： -->
+
+<ChildComponent
+  :title="pageTitle"
+  @update:title="pageTitle = $event"
+  :content="pageContent"
+  @update:content="pageContent = $event"
+/>
+```
+
+#### v-model 修饰符
+除了像 .trim 这样的 2.x 硬编码的 v-model 修饰符外，现在 3.x 还支持自定义修饰符：
+
+```javascript
+<ChildComponent v-model.capitalize="pageTitle" />
+```
+
 ### 全局内部 API
 在 Vue 3 中，全局和内部 API 都经过了重构，并考虑到了 tree-shaking 的支持。
 因此，全局 API 现在只能作为 ES 模块构建的命名导出进行访问。例如，我们之前的片段现在应该如下所示：

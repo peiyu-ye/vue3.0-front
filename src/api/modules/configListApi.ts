@@ -135,6 +135,27 @@ const configAPI = {
       params
     );
   },
+  /** 通话记录 */
+  ///api/config/groupcall/record/list
+  getRecordList(params: paramsType) {
+    return services.get(`${base.crmBaseURL}/api/config/groupcall/record/list`,params)
+  },
+  // 接通状态
+  getOnStatus() {
+    return services.get(`${base.crmBaseURL}/api/config/groupcall/record/status`);
+  },
+  // 下载录音 /api/config/groupcall/record/download
+  download(params: paramsType) {
+    return services(
+      {
+        url: '/api/config/groupcall/record/download',
+        method: 'get',
+        params: params,
+        responseType: 'blob'
+      }
+    );
+  },
+
 };
 
 export default configAPI;

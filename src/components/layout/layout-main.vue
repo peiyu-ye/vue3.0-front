@@ -38,12 +38,13 @@ export default {
 <style lang="stylus" scoped>
 .main-wrap {
   background-color: #fff;
-  margin: 20px;
+  padding: 20px;
   position: absolute;
   top: 64px;
   right: 0;
   left: 200px;
   bottom: 0;
+  overflow: auto;
 }
 
 .main-wrap-mix {
@@ -54,5 +55,24 @@ export default {
   right: 0;
   left: 80px;
   bottom: 0;
+}
+
+
+.main-wrap::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width : 6px;  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+.main-wrap::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 8px;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+  background: #efefef;
+}
+.main-wrap::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow   : inset 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background   : #ffffff;
 }
 </style>

@@ -49,7 +49,7 @@ export default {
 .header {
   background: '#fff';
   padding: 0;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.1);
+  box-shadow: inset 0px -2px 0px 0px rgba(228 228 228 .5);
 }
 
 .header-wrap {

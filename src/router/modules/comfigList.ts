@@ -29,6 +29,15 @@ const comfigList = {
       },
       component: () => import("@/views/configList/seatgroup.vue"),
     },
+    {
+      path: "/callRecords",
+      name: "callRecords",
+      hidden: false,
+      meta: {
+        title: "通话",
+      },
+      component: () => import("@/views/configList/callRecords.vue"),
+    },
   ],
 
 };

@@ -3,7 +3,7 @@
  * Common methods 
  * Py was created in 2020.11.07
  */ 
-
+import { isObject } from '@/utils/is';
 /**
  * 将对象作为参数添加到URL中
  * @param baseUrl url
@@ -27,6 +27,14 @@ export function setObjToUrlParams(baseUrl: string, obj: any): string {
     url = baseUrl.replace(/\/?$/, '?') + parameters;
   }
   return url;
+}
+/** deepMerge */
+export function deepMerge<T = any>(src: any, target: any): T {
+  let key: string;
+  for (key in target) {
+    src[key] = isObject(src[key]) ? deepMerge(src[key], target[key]) : (src[key] = target[key]);
+  }
+  return src;
 }
 
 /**
