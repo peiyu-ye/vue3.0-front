@@ -175,7 +175,7 @@ export default defineComponent({
         type: "text", // 控件类型
         labelText: "text控件名称", // 控件显示的文本
         fieldName: "formField1",
-        value: "",
+        value: "test",
         placeholder: "文本输入区域", // 默认控件的空值文本
         rules: [
           {
@@ -230,11 +230,11 @@ export default defineComponent({
         placeholder: "请输入文本了内容"
       },
       {
-        type: "select",
+        type: "multiple",
         labelText: "角色",
         fieldName: "role",
-        value: [],
-        multiple: "multiple",
+        value: ["0", "1"],
+        // multiple: "multiple",
         defaultValue: [],
         rules: [
           {

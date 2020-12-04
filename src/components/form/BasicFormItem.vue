@@ -12,7 +12,6 @@
     <a-input
       v-if="fieldOptions.fieldName && fieldOptions.type === 'text'"
       v-model:value="fieldOptions.value"
-      @input="inputValue"
       :disabled="fieldOptions.disabled"
       :size="fieldOptions.size ? fieldOptions.size : 'default'"
       :placeholder="fieldOptions.placeholder"
@@ -32,6 +31,18 @@
       :options="fieldOptions.options"
       :size="fieldOptions.size ? fieldOptions.size : 'default'"
       :mode="fieldOptions.multiple ? fieldOptions.multiple : 'default'"
+      allowClear
+      :placeholder="fieldOptions.placeholder"
+    />
+    <a-select
+      v-model:value="fieldOptions.value"
+      v-else-if="fieldOptions.fieldName && fieldOptions.type === 'multiple'"
+      style="width: 100%"
+      :disabled="fieldOptions.disabled"
+      optionFilterProp="children"
+      :options="fieldOptions.options"
+      :size="fieldOptions.size ? fieldOptions.size : 'default'"
+      mode="multiple"
       allowClear
       :placeholder="fieldOptions.placeholder"
     />
@@ -162,21 +173,9 @@ export default defineComponent({
           option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
       );
     }
-    // const { dataSource }: any = toRefs(props); //toRefs解构不影响 响应式
-    // watch(dataSource.value, (count, prevCount) => {
-    //   /* ... */
-    //   console.log("dataSource： count, prevCount", count, prevCount);
-    // });
-    function inputValue(e: any) {
-      // const returnValue = e.target.value;
-      console.log(e);
-      // const id = e.srcElement.id;
-      // emit("update:+" + id + "}", returnValue);
-    }
     return {
       selectFilterOption,
-      cascaderFilter,
-      inputValue
+      cascaderFilter
     };
   }
 });
