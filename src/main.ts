@@ -6,7 +6,7 @@ import AntDesignVue from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 import api from "./api/api";
 
-import "./style/index.styl";
+import "./style/global.styl";
 
 const app = createApp(App);
 app.config.globalProperties.$api = api;

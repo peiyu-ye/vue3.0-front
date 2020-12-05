@@ -2,6 +2,7 @@
   <div class="form-list-wrapper">
     <a-form ref="formRef" :layout="formLayout" v-model:model="fromData">
       {{ fromData }}
+      {{ renderDataSource }}
       <template v-for="item in renderDataSource" :key="item.fieldName">
         <template v-if="item.type && item.fieldName">
           <field-render :fieldOptions="item" />
