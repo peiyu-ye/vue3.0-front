@@ -162,7 +162,7 @@ import API from "../../api/api";
 import { message } from "ant-design-vue";
 import { PlayCircleOutlined } from "@ant-design/icons-vue";
 import moment from "moment";
-import { parseTime } from "../../utils/index";
+import { parseTime, average } from "../../utils/index";
 import PBasicForm from "@/components/form/BasicForm.vue";
 
 export default defineComponent({
@@ -580,6 +580,8 @@ export default defineComponent({
     onMounted(() => {
       // 调用当前方法
       // handleGetRecordList();
+      console.log("...: ", average(6, 7, 8, 9));
+      console.log("...2: ", average(...[6, 7, 8]));
     });
     /** 返回值  */
     return {

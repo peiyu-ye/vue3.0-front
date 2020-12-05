@@ -38,7 +38,7 @@ export function deepMerge<T = any>(src: any, target: any): T {
 }
 
 /**
- * 解析时间字符串
+ * 解析时间字符串--时间格式
  * @param {(Object|string|number)} time
  * @param {string} cFormat
  * @returns {string}
@@ -97,13 +97,20 @@ export function unique<T = any>(arr: T[], key: string): T[] {
 export function es6Unique<T>(arr: T[]): T[] {
   return Array.from(new Set(arr));
 }
+/**
+ * 计算平均值
+ * @example  average(...[6, 7, 8]); // 7
+ * @example  average(6, 7, 8, 9); // 7.5
+ */
+export const average = (...numbers: any[]) => numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0) / numbers.length;
+
 
 /**
  * @desc 函数防抖
  * @param func 函数
  * @param wait 延迟执行毫秒数
  * @param immediate true 表立即执行，false 表非立即执行
- * @use  const debouncedUse: Function = new Debounced().use(request, 1000)  //request 是请求方法
+ * @example  const debouncedUse: Function = new Debounced().use(request, 1000)  //request 是请求方法
  */
 export class Debounced {
   public use = (func: Function, wait: number = 1000, immediate?: boolean): Function => {
